@@ -15,7 +15,3 @@ Este es un juego en 2D desarrollado utilizando el framework Phaser. En este jueg
 1. Clona o descarga el repositorio en tu máquina local.
 2. Abre el archivo `index.html` en un navegador web compatible.
 3. ¡Disfruta del juego! Usa las teclas de flecha para controlar al personaje.
-
-## Licencia
-
-Este proyecto está bajo la licencia [MIT License](LICENSE).
