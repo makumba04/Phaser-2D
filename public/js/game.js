@@ -20,6 +20,8 @@ var game = new Phaser.Game(config);
 
 function preload() {
     this.load.audio('bg_music', '../assets/sound/bgmusic.m4a');
+    this.load.audio('gameover_music', '../assets/sound/gameover_music.mp3')
+    this.load.image('bg_gameover', './assets/bg_gameover.png');
     this.load.image('sky', './assets/sky.png');
     this.load.image('ground', './assets/platform.png');
     this.load.image('star', './assets/diamond.png');
@@ -35,6 +37,8 @@ var scoreText;
 var bombs;
 var lives = 1;
 var livesText;
+var game_over_txt;
+var gameover_music;
 var gameOver = false;
 
 function create() {
@@ -51,6 +55,10 @@ function create() {
     this.bg_music = this.sound.add('bg_music');
     this.bg_music.loop = true;
     this.bg_music.play();
+
+    gameover_music = this.sound.add('gameover_music');
+    gameover_music.loop = true;
+    gameover_music.stop();
 
     player = this.physics.add.sprite(100, 450, 'dude');
     this.physics.add.collider(player, platforms);
@@ -104,9 +112,8 @@ function create() {
 
     livesText = this.add.text(16, 50, 'Lives: ' + lives, { fontSize: '32px', fill: '#000' });
 
-    this.game_over_txt = this.add.text(400, 275, 'Game Over', { fontSize: '64px', fill: '#fff' });
-    this.game_over_txt.setOrigin(0.5);
-    this.game_over_txt.visible = false;
+    game_over_txt = this.add.text(400, 275, 'Game Over', { fontSize: '64px', fill: '#fff' }).setOrigin(0.5).setDepth(-1);
+    game_over_txt.visible = false;
 }
 
 function update() {
@@ -154,13 +161,14 @@ function hitBomb(player, bomb) {
     if (lives === 0) {
         this.physics.pause();
         this.bg_music.stop();
-        player.setPosition(400, 375)
+        gameover_music.play();
+        this.add.image(400, 300, 'bg_gameover');
+        player.setPosition(400, 375);
         player.setTint(0xff0000);
         player.anims.play('turn');
-        this.game_over_txt.visible = true;
+        player.setDepth(1);
+        game_over_txt.setDepth(1);
+        game_over_txt.visible = true;
         gameOver = true;
-    } else {
-        player.setX(100);
-        player.setY(450);
     }
 }

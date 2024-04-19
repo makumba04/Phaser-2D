@@ -1,0 +1,37 @@
+body {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+header {
+    width: 100%;
+    color: white;
+}
+
+h1 {
+    margin: 0.35em 0 0.35em 0.5em;
+    font-size: 3em;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+canvas {
+    float: right;
+    image-rendering: pixelated;
+    border: 10px double white;
+}
+
+.tutorial {
+    width: 800px;
+    margin: 1em;
+    padding: 1em;
+    color: white;
+    border: 2px dashed white;
+}
