@@ -13,5 +13,5 @@ Este es un juego en 2D desarrollado utilizando el framework Phaser. En este jueg
 ## Instalación y Uso
 
 1. Clona o descarga el repositorio en tu máquina local.
-2. Abre el archivo `index.html` en un navegador web compatible.
+2. 2. En powershell o CMD (o similares) navega al directorio del juego y ejecuta 'node index.js' (IMPORTANTE: Requiere Node para funcionar)
 3. ¡Disfruta del juego! Usa las teclas de flecha para controlar al personaje.
