@@ -33,7 +33,7 @@ var stars;
 var score = 0;
 var scoreText;
 var bombs;
-var lives = 3;
+var lives = 1;
 var livesText;
 var gameOver = false;
 
@@ -91,17 +91,22 @@ function create() {
     this.physics.add.collider(stars, platforms);
     this.physics.add.overlap(player, stars, collectStar, null, this);
 
-    scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+    scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
     bombs = this.physics.add.group();
     this.physics.add.collider(bombs, platforms);
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 
-    var startText = this.add.text(300, 300, 'Press any key to start', { fontSize: '32px', fill: '#fff' });
+    var startText = this.add.text(400, 565, 'Press any key to start', { fontSize: '32px', fill: '#fff' });
     this.input.keyboard.on('keydown', function () {
         startText.setVisible(false);
     });
+    startText.setOrigin(0.5)
 
     livesText = this.add.text(16, 50, 'Lives: ' + lives, { fontSize: '32px', fill: '#000' });
+
+    this.game_over_txt = this.add.text(400, 275, 'Game Over', { fontSize: '64px', fill: '#fff' });
+    this.game_over_txt.setOrigin(0.5);
+    this.game_over_txt.visible = false;
 }
 
 function update() {
@@ -149,8 +154,10 @@ function hitBomb(player, bomb) {
     if (lives === 0) {
         this.physics.pause();
         this.bg_music.stop();
+        player.setPosition(400, 375)
         player.setTint(0xff0000);
         player.anims.play('turn');
+        this.game_over_txt.visible = true;
         gameOver = true;
     } else {
         player.setX(100);
