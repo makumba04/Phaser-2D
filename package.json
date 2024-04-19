@@ -1,0 +1,14 @@
+{
+  "name": "phaser-2d",
+  "version": "1.0.0",
+  "description": "Este es un juego en 2D desarrollado utilizando el framework Phaser. En este juego, el jugador controla a un personaje que debe recolectar diamantes mientras evita las bombas. El juego cuenta con un sistema de puntuación y vidas, y termina cuando el jugador pierde todas sus vidas.",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
