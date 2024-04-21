@@ -13,6 +13,9 @@ var config = {
         preload: preload,
         create: create,
         update: update
+    },
+    dom: {
+        createContainer: true
     }
 };
 
@@ -112,7 +115,7 @@ function create() {
 
     livesText = this.add.text(16, 50, 'Lives: ' + lives, { fontSize: '32px', fill: '#000' });
 
-    game_over_txt = this.add.text(400, 275, 'Game Over', { fontSize: '64px', fill: '#fff' }).setOrigin(0.5).setDepth(-1);
+    game_over_txt = this.add.text(400, 175, 'Game Over', { fontSize: '64px', fill: '#fff' }).setOrigin(0.5).setDepth(-1);
     game_over_txt.visible = false;
 }
 
@@ -163,7 +166,8 @@ function hitBomb(player, bomb) {
         this.bg_music.stop();
         gameover_music.play();
         this.add.image(400, 300, 'bg_gameover');
-        player.setPosition(400, 375);
+
+        player.setPosition(400, 275);
         player.setTint(0xff0000);
         player.anims.play('turn');
         player.setDepth(1);
